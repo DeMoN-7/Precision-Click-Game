@@ -2,8 +2,10 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches:
-      - main  # Deploy when the main branch is updated
+    branches: [ "main" ]  # Trigger deployment on main branch updates
+
+permissions:
+  contents: write  # Allow write permissions to the repository contents
 
 jobs:
   deploy:
@@ -17,4 +19,4 @@ jobs:
       uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./  # Adjust if files are in a specific folder
+        publish_dir: ./  # Adjust if files are in a subdirectory
